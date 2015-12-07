@@ -1,17 +1,16 @@
 <?php
+
 /**
  * Class representing phpQuery objects.
  *
- * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @package phpQuery
  * @method phpQueryObject clone() clone()
  * @method phpQueryObject empty() empty()
- * @method phpQueryObject next() next($selector = null)
- * @method phpQueryObject prev() prev($selector = null)
- * @property Int $length
+ *
+ * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  */
 class phpQueryObject
-	implements Iterator, Countable, ArrayAccess {
+	implements \Iterator, \Countable, \ArrayAccess {
 	public $documentID = null;
 	/**
 	 * DOMDocument class.
@@ -75,10 +74,12 @@ class phpQueryObject
 	 * @access private
 	 */
 	protected $current = null;
+
+
 	/**
-	 * Enter description here...
-	 *
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * phpQueryObject constructor.
+	 * @throws \Exception
+	 * @param $documentID
 	 */
 	public function __construct($documentID) {
 //		if ($documentID instanceof self)
@@ -1864,6 +1865,10 @@ class phpQueryObject
 		$args = func_get_args();
 		return call_user_func_array(array($this, 'htmlOuter'), $args);
 	}
+
+	/**
+	 * @return string
+	 */
 	public function __toString() {
 		return $this->markupOuter();
 	}
@@ -2281,7 +2286,7 @@ class phpQueryObject
 	 * @param $file
 	 * @return unknown_type
 	 */
-	public static function extend($class, $file = null) {
+	public function extend($class, $file = null) {
 		return $this->plugin($class, $file);
 	}
 	/**
