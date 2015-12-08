@@ -1,6 +1,6 @@
 <?php
 // require_once 'PHPUnit/Autoload.php';
-require_once dirname(__FILE__) . '/../phpQuery/phpQuery.php';
+require_once dirname(__FILE__) . '/../src/phpQuery.php';
 //phpQuery::$debug = true;
 
 class phpQueryBasicTest extends PHPUnit_Framework_TestCase {

@@ -1,5 +1,5 @@
 <?php
-require_once('../phpQuery/phpQuery.php');
+require_once('../src/phpQuery.php');
 phpQuery::$debug = 2;
 
 

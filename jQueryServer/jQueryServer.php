@@ -24,7 +24,7 @@ class jQueryServer {
 	public $allowedHosts = null;
 	function __construct($data) {
 		$pq = null;
-		include_once(dirname(__FILE__).'/../phpQuery/phpQuery.php');
+		include_once(dirname(__FILE__) . '/../src/phpQuery.php');
 		if (file_exists(dirname(__FILE__).'/jQueryServer.config.php')) {
 			include_once(dirname(__FILE__).'/jQueryServer.config.php');
 			if ($jQueryServerConfig)

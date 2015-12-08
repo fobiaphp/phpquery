@@ -1,5 +1,5 @@
 <?php
-require('phpQuery/phpQuery.php');
+require('src/phpQuery.php');
 
 // INITIALIZE IT
 // phpQuery::newDocumentHTML($markup);

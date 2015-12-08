@@ -19,7 +19,7 @@ class phpQuery {
 			print var_dump($text);
 	}
 }
-require_once('../phpQuery/DOMDocumentWrapper.php');
+require_once('../src/DOMDocumentWrapper.php');
 phpQuery::$debug = 2;
 
 /* ENCODINGS */
