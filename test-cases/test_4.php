@@ -1,5 +1,5 @@
 <?php
-require_once('../src/phpQuery.php');
+require_once('bootstrap.php');
 phpQuery::$debug = true;
 
 // SLICE1

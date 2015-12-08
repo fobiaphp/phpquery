@@ -1,12 +1,21 @@
 <?php
-use phpQuery\ICallbackNamed;
+
+namespace phpQuery;
+use DOMDocument;
+use DOMElement;
+use DOMNode;
+use DOMNodeList;
+use DOMXPath;
+use Exception;
+use phpQuery;
 use phpQuery\Callback;
+use phpQuery\CallbackBody;
 use phpQuery\CallbackParam;
 use phpQuery\CallbackParameterToReference;
-use phpQuery\CallbackReturnValue;
 use phpQuery\CallbackReturnReference;
-use phpQuery\CallbackBody;
-
+use phpQuery\CallbackReturnValue;
+use phpQuery\DOMDocumentWrapper;
+use phpQuery\ICallbackNamed;
 /**
  * DOMEvent class.
  *
@@ -16,7 +25,7 @@ use phpQuery\CallbackBody;
  * @package phpQuery
  * @todo implement ArrayAccess ?
  */
-class phpQuery_DOMEvent {
+class DOMEvent {
 	/**
 	 * Returns a boolean indicating whether the event bubbles up through the DOM or not.
 	 *

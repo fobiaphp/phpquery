@@ -18,6 +18,7 @@ define('DOMDOCUMENT', 'DOMDocument');
 define('DOMELEMENT', 'DOMElement');
 define('DOMNODELIST', 'DOMNodeList');
 define('DOMNODE', 'DOMNode');
+
 require_once(dirname(__FILE__) . '/phpQuery/DOMEvent.php');
 require_once(dirname(__FILE__) . '/phpQuery/DOMDocumentWrapper.php');
 require_once(dirname(__FILE__).'/phpQueryEvents.php');
@@ -25,13 +26,10 @@ require_once(dirname(__FILE__).'/phpQuery/Callback.php');
 require_once(dirname(__FILE__).'/phpQueryObject.php');
 require_once(dirname(__FILE__).'/compat/mbstring.php');
 
-use phpQuery\ICallbackNamed;
 use phpQuery\Callback;
 use phpQuery\CallbackParam;
 use phpQuery\CallbackParameterToReference;
-use phpQuery\CallbackReturnValue;
-use phpQuery\CallbackReturnReference;
-use phpQuery\CallbackBody;
+use phpQuery\DOMDocumentWrapper;
 
 /**
  * Static namespace for phpQuery functions.
@@ -502,10 +500,10 @@ abstract class phpQuery {
 				$document = clone $html;
 			} else {
 				// new document, add it to phpQuery::$documents
-				$wrapper = new phpQuery_DOMDocumentWrapper($html, $contentType, $documentID);
+				$wrapper = new DOMDocumentWrapper($html, $contentType, $documentID);
 			}
 		} else {
-			$wrapper = new phpQuery_DOMDocumentWrapper($html, $contentType, $documentID);
+			$wrapper = new DOMDocumentWrapper($html, $contentType, $documentID);
 		}
 //		$wrapper->id = $id;
 		// bind document
@@ -1348,6 +1346,7 @@ set_include_path(
 // why ? no __call nor __get for statics in php...
 // XXX __callStatic will be available in PHP 5.3
 phpQuery::$plugins = new phpQueryPlugins();
+
 // include bootstrap file (personal library config)
 if (file_exists(dirname(__FILE__).'/phpQuery/bootstrap.php'))
 	require_once dirname(__FILE__).'/phpQuery/bootstrap.php';

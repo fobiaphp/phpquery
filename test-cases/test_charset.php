@@ -1,6 +1,6 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <?php
-require_once('../src/phpQuery.php');
+require_once('bootstrap.php');
 // phpQuery::$debug = true;
 
 $testName = 'Text node append';

@@ -1,11 +1,22 @@
 <?php
-use phpQuery\ICallbackNamed;
+
+namespace phpQuery;
+
+use DOMDocument;
+use DOMElement;
+use DOMNode;
+use DOMNodeList;
+use DOMXPath;
+use Exception;
+use phpQuery;
 use phpQuery\Callback;
+use phpQuery\CallbackBody;
 use phpQuery\CallbackParam;
 use phpQuery\CallbackParameterToReference;
-use phpQuery\CallbackReturnValue;
 use phpQuery\CallbackReturnReference;
-use phpQuery\CallbackBody;
+use phpQuery\CallbackReturnValue;
+use phpQuery\DOMEvent;
+use phpQuery\ICallbackNamed;
 
 /**
  * DOMDocumentWrapper class simplifies work with DOMDocument.
@@ -17,7 +28,7 @@ use phpQuery\CallbackBody;
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @package phpQuery
  */
-class phpQuery_DOMDocumentWrapper {
+class DOMDocumentWrapper {
 	/**
 	 * @var DOMDocument
 	 */
@@ -486,10 +497,10 @@ class phpQuery_DOMDocumentWrapper {
 	 *
 	 * @param $source
 	 *
-*@return phpQuery_DOMDocumentWrapper
+*@return DOMDocumentWrapper
 	 */
 	protected function documentFragmentCreate($source, $charset = null) {
-		$fake = new phpQuery_DOMDocumentWrapper();
+		$fake = new DOMDocumentWrapper();
 		$fake->contentType = $this->contentType;
 		$fake->isXML = $this->isXML;
 		$fake->isHTML = $this->isHTML;
@@ -516,7 +527,7 @@ class phpQuery_DOMDocumentWrapper {
 	}
 	/**
 	 *
-	 * @param $document phpQuery_DOMDocumentWrapper
+	 * @param $document DOMDocumentWrapper
 	 * @param $markup
 	 *
 *@return $document

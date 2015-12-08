@@ -1,6 +1,6 @@
 <?php
 //error_reporting(E_ALL);
-require_once('../src/phpQuery.php');
+require_once('bootstrap.php');
 phpQuery::$debug = true;
 phpQuery::plugin('Scripts');
 

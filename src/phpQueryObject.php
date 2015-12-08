@@ -1,11 +1,9 @@
 <?php
-use phpQuery\ICallbackNamed;
 use phpQuery\Callback;
 use phpQuery\CallbackParam;
-use phpQuery\CallbackParameterToReference;
-use phpQuery\CallbackReturnValue;
-use phpQuery\CallbackReturnReference;
-use phpQuery\CallbackBody;
+use phpQuery\DOMDocumentWrapper;
+use phpQuery\DOMEvent;
+
 /**
  * Class representing phpQuery objects.
  *
@@ -27,7 +25,7 @@ class phpQueryObject
 	public $charset = null;
 	/**
 	 *
-	 * @var phpQuery_DOMDocumentWrapper
+	 * @var DOMDocumentWrapper
 	 */
 	public $documentWrapper = null;
 	/**
@@ -1757,7 +1755,7 @@ class phpQueryObject
 				$this->debug("Removing '{$node->tagName}'");
 			$node->parentNode->removeChild($node);
 			// Mutation event
-			$event = new phpQuery_DOMEvent(array(
+			$event = new DOMEvent(array(
 				'target' => $node,
 				'type' => 'DOMNodeRemoved'
 			));
@@ -1769,7 +1767,7 @@ class phpQueryObject
 	}
 	protected function markupEvents($newMarkup, $oldMarkup, $node) {
 		if ($node->tagName == 'textarea' && $newMarkup != $oldMarkup) {
-			$event = new phpQuery_DOMEvent(array(
+			$event = new DOMEvent(array(
 				'target' => $node,
 				'type' => 'change'
 			));
@@ -2193,7 +2191,7 @@ class phpQueryObject
 						break;
 				}
 				// Mutation event
-				$event = new phpQuery_DOMEvent(array(
+				$event = new DOMEvent(array(
 					'target' => $insert,
 					'type' => 'DOMNodeInserted'
 				));
@@ -2583,7 +2581,7 @@ class phpQueryObject
 			&& $node->getAttribute('type') == 'checkbox';
 		$isOption = $node->tagName == 'option';
 		if ($isInputValue && $attr == 'value' && $oldValue != $node->getAttribute($attr)) {
-			$event = new phpQuery_DOMEvent(array(
+			$event = new DOMEvent(array(
 				'target' => $node,
 				'type' => 'change'
 			));
@@ -2593,7 +2591,7 @@ class phpQueryObject
 				// un-check
 				|| (! $node->hasAttribute($attr) && $oldAttr)
 			)) {
-			$event = new phpQuery_DOMEvent(array(
+			$event = new DOMEvent(array(
 				'target' => $node,
 				'type' => 'change'
 			));
@@ -2603,7 +2601,7 @@ class phpQueryObject
 				// un-select
 				|| (! $node->hasAttribute($attr) && $oldAttr)
 			)) {
-			$event = new phpQuery_DOMEvent(array(
+			$event = new DOMEvent(array(
 				'target' => $node->parentNode,
 				'type' => 'change'
 			));

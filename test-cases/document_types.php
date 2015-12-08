@@ -19,7 +19,7 @@ class phpQuery {
 			print var_dump($text);
 	}
 }
-require_once('../src/phpQueryDOMDocumentWrapper.php');
+require_once('../src/phpQuery/DOMDocumentWrapper.php');
 phpQuery::$debug = 2;
 
 /* ENCODINGS */
@@ -35,7 +35,7 @@ print '<meta http-equiv="Content-Type" content="text/html;charset=utf-8">';
 //	file_get_contents('document-types/document-iso88592-nocharset.html'),
 //	'text/html;charset=iso-8859-2'
 //);
-$htmlUtf = new phpQuery_DOMDocumentWrapper(
+$htmlUtf = new phpQuery\DOMDocumentWrapper(
 	file_get_contents('document-types/document-utf8.html')
 );
 var_dump($htmlUtf->markup());

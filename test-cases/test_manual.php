@@ -1,6 +1,6 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <?php
-require_once('../src/phpQuery.php');
+require_once('bootstrap.php');
 //phpQuery::$debug = 2;
 phpQuery::plugin('Scripts');
 
@@ -263,10 +263,10 @@ phpQuery::newDocumentXHTML($XHTML)
 // 										 ))));
 
 // http://code.google.com/p/phpquery/issues/detail?id=102
-// $doc = phpQuery::newDocumentFileHTML('http://www.google.de'); 
+// $doc = phpQuery::newDocumentFileHTML('http://www.google.de');
 // //$doc = phpQuery::newDocument('');
 // $images = $doc['img']->dump();
-// 
+//
 // $foo = 'aaa';
 // var_dump(mb_ereg_match('^[\w|\||-]+$', $foo) || $foo == '*');
 // var_dump(preg_match('@^[\w|\||-]+$@', $foo) || $foo == '*');
@@ -298,4 +298,4 @@ $doc->dumpTree();
 ?><pre class='2'><?php
 var_dump($doc->php());
 ?></pre><?php
-eval('?>'.$doc->php()); 
+eval('?>'.$doc->php());

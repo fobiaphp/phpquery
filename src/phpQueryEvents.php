@@ -1,11 +1,6 @@
 <?php
-use phpQuery\ICallbackNamed;
-use phpQuery\Callback;
-use phpQuery\CallbackParam;
-use phpQuery\CallbackParameterToReference;
-use phpQuery\CallbackReturnValue;
-use phpQuery\CallbackReturnReference;
-use phpQuery\CallbackBody;
+
+use phpQuery\DOMEvent;
 
 /**
  * Event handling class.
@@ -42,13 +37,13 @@ abstract class phpQueryEvents {
 					->trigger($type, $data);
 			}
 		} else {
-			if (isset($data[0]) && $data[0] instanceof phpQuery_DOMEvent) {
+			if (isset($data[0]) && $data[0] instanceof DOMEvent) {
 				$event = $data[0];
 				$event->relatedTarget = $event->target;
 				$event->target = $node;
 				$data = array_slice($data, 1);
 			} else {
-				$event = new phpQuery_DOMEvent(array(
+				$event = new DOMEvent(array(
 					'type' => $type,
 					'target' => $node,
 					'timeStamp' => time(),
