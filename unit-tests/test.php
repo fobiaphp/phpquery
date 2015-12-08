@@ -3,7 +3,7 @@
 require_once dirname(__FILE__) . '/../src/phpQuery.php';
 //phpQuery::$debug = true;
 
-class phpQueryBasicTest extends PHPUnit_Framework_TestCase {
+class phpQueryBasicTest extends \PHPUnit_Framework_TestCase {
     function provider() {
         // TODO change filename
         return array( array(

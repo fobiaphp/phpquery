@@ -1,5 +1,11 @@
 <?php
-
+use phpQuery\ICallbackNamed;
+use phpQuery\Callback;
+use phpQuery\CallbackParam;
+use phpQuery\CallbackParameterToReference;
+use phpQuery\CallbackReturnValue;
+use phpQuery\CallbackReturnReference;
+use phpQuery\CallbackBody;
 /**
  * Class representing phpQuery objects.
  *
@@ -21,7 +27,7 @@ class phpQueryObject
 	public $charset = null;
 	/**
 	 *
-	 * @var DOMDocumentWrapper
+	 * @var phpQuery_DOMDocumentWrapper
 	 */
 	public $documentWrapper = null;
 	/**
@@ -1751,7 +1757,7 @@ class phpQueryObject
 				$this->debug("Removing '{$node->tagName}'");
 			$node->parentNode->removeChild($node);
 			// Mutation event
-			$event = new DOMEvent(array(
+			$event = new phpQuery_DOMEvent(array(
 				'target' => $node,
 				'type' => 'DOMNodeRemoved'
 			));
@@ -1763,7 +1769,7 @@ class phpQueryObject
 	}
 	protected function markupEvents($newMarkup, $oldMarkup, $node) {
 		if ($node->tagName == 'textarea' && $newMarkup != $oldMarkup) {
-			$event = new DOMEvent(array(
+			$event = new phpQuery_DOMEvent(array(
 				'target' => $node,
 				'type' => 'change'
 			));
@@ -1883,7 +1889,7 @@ class phpQueryObject
 	}
 	/**
 	 * Enter description here...
-	 * 
+	 *
 	 * @param $code
 	 * @return unknown_type
 	 */
@@ -1894,7 +1900,7 @@ class phpQueryObject
 	}
 	/**
 	 * Enter description here...
-	 * 
+	 *
 	 * @param $code
 	 * @return unknown_type
 	 */
@@ -2187,7 +2193,7 @@ class phpQueryObject
 						break;
 				}
 				// Mutation event
-				$event = new DOMEvent(array(
+				$event = new phpQuery_DOMEvent(array(
 					'target' => $insert,
 					'type' => 'DOMNodeInserted'
 				));
@@ -2577,7 +2583,7 @@ class phpQueryObject
 			&& $node->getAttribute('type') == 'checkbox';
 		$isOption = $node->tagName == 'option';
 		if ($isInputValue && $attr == 'value' && $oldValue != $node->getAttribute($attr)) {
-			$event = new DOMEvent(array(
+			$event = new phpQuery_DOMEvent(array(
 				'target' => $node,
 				'type' => 'change'
 			));
@@ -2587,7 +2593,7 @@ class phpQueryObject
 				// un-check
 				|| (! $node->hasAttribute($attr) && $oldAttr)
 			)) {
-			$event = new DOMEvent(array(
+			$event = new phpQuery_DOMEvent(array(
 				'target' => $node,
 				'type' => 'change'
 			));
@@ -2597,7 +2603,7 @@ class phpQueryObject
 				// un-select
 				|| (! $node->hasAttribute($attr) && $oldAttr)
 			)) {
-			$event = new DOMEvent(array(
+			$event = new phpQuery_DOMEvent(array(
 				'target' => $node->parentNode,
 				'type' => 'change'
 			));
@@ -2924,7 +2930,7 @@ class phpQueryObject
 	}
 	/**
 	 * Enter description here...
-	 * 
+	 *
 	 * @param <type> $key
 	 * @param <type> $value
 	 */
@@ -2941,7 +2947,7 @@ class phpQueryObject
 	}
 	/**
 	 * Enter description here...
-	 * 
+	 *
 	 * @param <type> $key
 	 */
 	public function removeData($key) {

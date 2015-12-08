@@ -1,4 +1,12 @@
 <?php
+use phpQuery\ICallbackNamed;
+use phpQuery\Callback;
+use phpQuery\CallbackParam;
+use phpQuery\CallbackParameterToReference;
+use phpQuery\CallbackReturnValue;
+use phpQuery\CallbackReturnReference;
+use phpQuery\CallbackBody;
+
 /**
  * phpQuery plugin class extending phpQuery object.
  * Methods from this class are callable on every phpQuery object.
@@ -52,13 +60,13 @@ abstract class phpQueryPlugin_Scripts {
 	}
 	/**
 	 * Extend scripts' namespace with $name related with $callback.
-	 * 
+	 *
 	 * Callback parameter order looks like this:
 	 * - $this
 	 * - $params
 	 * - &$return
 	 * - $config
-	 * 
+	 *
 	 * @param $name
 	 * @param $callback
 	 * @return bool

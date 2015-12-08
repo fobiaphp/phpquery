@@ -1,4 +1,12 @@
 <?php
+use phpQuery\ICallbackNamed;
+use phpQuery\Callback;
+use phpQuery\CallbackParam;
+use phpQuery\CallbackParameterToReference;
+use phpQuery\CallbackReturnValue;
+use phpQuery\CallbackReturnReference;
+use phpQuery\CallbackBody;
+
 /**
  * WebBrowser plugin.
  *
@@ -247,7 +255,7 @@ class phpQueryPlugin_WebBrowser {
 			return $pq;
 	}
 	/**
-	 * 
+	 *
 	 * @param $e
 	 * @param $callback
 	 * @return unknown_type

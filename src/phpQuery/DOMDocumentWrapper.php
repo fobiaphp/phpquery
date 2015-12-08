@@ -1,4 +1,12 @@
 <?php
+use phpQuery\ICallbackNamed;
+use phpQuery\Callback;
+use phpQuery\CallbackParam;
+use phpQuery\CallbackParameterToReference;
+use phpQuery\CallbackReturnValue;
+use phpQuery\CallbackReturnReference;
+use phpQuery\CallbackBody;
+
 /**
  * DOMDocumentWrapper class simplifies work with DOMDocument.
  *
@@ -9,7 +17,7 @@
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @package phpQuery
  */
-class DOMDocumentWrapper {
+class phpQuery_DOMDocumentWrapper {
 	/**
 	 * @var DOMDocument
 	 */
@@ -152,7 +160,7 @@ class DOMDocumentWrapper {
 		// @see http://www.w3.org/International/O-HTTP-charset
 		if (! $documentCharset) {
 			$documentCharset = 'ISO-8859-1';
-			$addDocumentCharset = true;	
+			$addDocumentCharset = true;
 		}
 		// Should be careful here, still need 'magic encoding detection' since lots of pages have other 'default encoding'
 		// Worse, some pages can have mixed encodings... we'll try not to worry about that
@@ -442,7 +450,7 @@ class DOMDocumentWrapper {
 //					if ($fake === false)
 //						throw new Exception("Error loading documentFragment markup");
 //					else
-//						$return = array_merge($return, 
+//						$return = array_merge($return,
 //							$this->import($fake->root->childNodes)
 //						);
 //				} else {
@@ -477,10 +485,11 @@ class DOMDocumentWrapper {
 	 * Creates new document fragment.
 	 *
 	 * @param $source
-	 * @return DOMDocumentWrapper
+	 *
+*@return phpQuery_DOMDocumentWrapper
 	 */
 	protected function documentFragmentCreate($source, $charset = null) {
-		$fake = new DOMDocumentWrapper();
+		$fake = new phpQuery_DOMDocumentWrapper();
 		$fake->contentType = $this->contentType;
 		$fake->isXML = $this->isXML;
 		$fake->isHTML = $this->isHTML;
@@ -507,9 +516,10 @@ class DOMDocumentWrapper {
 	}
 	/**
 	 *
-	 * @param $document DOMDocumentWrapper
+	 * @param $document phpQuery_DOMDocumentWrapper
 	 * @param $markup
-	 * @return $document
+	 *
+*@return $document
 	 */
 	private function documentFragmentLoadMarkup($fragment, $charset, $markup = null) {
 		// TODO error handling

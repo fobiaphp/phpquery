@@ -18,12 +18,21 @@ define('DOMDOCUMENT', 'DOMDocument');
 define('DOMELEMENT', 'DOMElement');
 define('DOMNODELIST', 'DOMNodeList');
 define('DOMNODE', 'DOMNode');
-require_once(dirname(__FILE__).'/phpQuery/DOMEvent.php');
-require_once(dirname(__FILE__).'/phpQuery/DOMDocumentWrapper.php');
-require_once(dirname(__FILE__).'/phpQuery/phpQueryEvents.php');
+require_once(dirname(__FILE__) . '/phpQuery/DOMEvent.php');
+require_once(dirname(__FILE__) . '/phpQuery/DOMDocumentWrapper.php');
+require_once(dirname(__FILE__).'/phpQueryEvents.php');
 require_once(dirname(__FILE__).'/phpQuery/Callback.php');
-require_once(dirname(__FILE__).'/phpQuery/phpQueryObject.php');
-require_once(dirname(__FILE__).'/phpQuery/compat/mbstring.php');
+require_once(dirname(__FILE__).'/phpQueryObject.php');
+require_once(dirname(__FILE__).'/compat/mbstring.php');
+
+use phpQuery\ICallbackNamed;
+use phpQuery\Callback;
+use phpQuery\CallbackParam;
+use phpQuery\CallbackParameterToReference;
+use phpQuery\CallbackReturnValue;
+use phpQuery\CallbackReturnReference;
+use phpQuery\CallbackBody;
+
 /**
  * Static namespace for phpQuery functions.
  *
@@ -32,8 +41,8 @@ require_once(dirname(__FILE__).'/phpQuery/compat/mbstring.php');
  */
 abstract class phpQuery {
 	/**
-	 * XXX: Workaround for mbstring problems 
-	 * 
+	 * XXX: Workaround for mbstring problems
+	 *
 	 * @var bool
 	 */
 	public static $mbstringSupport = true;
@@ -493,10 +502,10 @@ abstract class phpQuery {
 				$document = clone $html;
 			} else {
 				// new document, add it to phpQuery::$documents
-				$wrapper = new DOMDocumentWrapper($html, $contentType, $documentID);
+				$wrapper = new phpQuery_DOMDocumentWrapper($html, $contentType, $documentID);
 			}
 		} else {
-			$wrapper = new DOMDocumentWrapper($html, $contentType, $documentID);
+			$wrapper = new phpQuery_DOMDocumentWrapper($html, $contentType, $documentID);
 		}
 //		$wrapper->id = $id;
 		// bind document
