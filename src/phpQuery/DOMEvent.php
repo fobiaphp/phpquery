@@ -1,21 +1,9 @@
 <?php
 
 namespace phpQuery;
-use DOMDocument;
-use DOMElement;
-use DOMNode;
-use DOMNodeList;
-use DOMXPath;
-use Exception;
+
 use phpQuery;
-use phpQuery\Callback;
-use phpQuery\CallbackBody;
-use phpQuery\CallbackParam;
-use phpQuery\CallbackParameterToReference;
-use phpQuery\CallbackReturnReference;
-use phpQuery\CallbackReturnValue;
-use phpQuery\DOMDocumentWrapper;
-use phpQuery\ICallbackNamed;
+
 /**
  * DOMEvent class.
  *

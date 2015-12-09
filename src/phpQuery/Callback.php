@@ -2,15 +2,7 @@
 
 namespace phpQuery;
 
-use DOMDocument;
-use DOMElement;
-use DOMNode;
-use DOMNodeList;
-use DOMXPath;
-use Exception;
 use phpQuery;
-use phpQuery\DOMDocumentWrapper;
-use phpQuery\DOMEvent;
 
 interface ICallbackNamed {
 	function hasName();
