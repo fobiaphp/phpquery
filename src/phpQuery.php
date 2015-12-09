@@ -1338,11 +1338,11 @@ function pq($arg1, $context = null) {
 	);
 }
 // add plugins dir and Zend framework to include path
-set_include_path(
-	get_include_path()
-		.PATH_SEPARATOR.dirname(__FILE__).'/phpQuery/'
-		.PATH_SEPARATOR.dirname(__FILE__).'/phpQuery/plugins/'
-);
+//set_include_path(
+//	get_include_path()
+//		.PATH_SEPARATOR.dirname(__FILE__).'/phpQuery/'
+//		.PATH_SEPARATOR.dirname(__FILE__).'/phpQuery/plugins/'
+//);
 // why ? no __call nor __get for statics in php...
 // XXX __callStatic will be available in PHP 5.3
 phpQuery::$plugins = new phpQueryPlugins();
