@@ -1,21 +1,25 @@
 #!/usr/bin/env php
 <?php
 if (!isset($argv[1]) || $argv[1] == 'help' || $argv[1] == '--help' || $argv[1] == '-h')
-	die("Usage: 
+	die("Usage:
   phpquery URL --method1 arg1 arg2 argN --method2 arg1 arg2 argN ...
-Example: 
+Example:
   phpquery 'http://localhost' --find 'div > p' --contents
-Pipe: 
+Pipe:
   cat index.html | phpquery --find 'div > p' --contents
-Docs: 
+Docs:
   http://code.google.com/p/phpquery/wiki/\n");
 /* ALL-IN-ONE-SECTION-START */
 set_include_path(get_include_path()
-	.':'.'/usr/lib/phpquery'
-	.':'.realpath(dirname(__FILE__).'/../phpQuery')
+	.':'.realpath(dirname(__FILE__).'/../src')
 );
-require_once('phpQuery.php');
+//
+require_once( 'phpQuery.php' );
 /* ALL-IN-ONE-SECTION-END */
+
+use phpQuery\Callback;
+use phpQuery\CallbackParam;
+
 //phpQuery::$debug = true;
 //var_dump($argv);
 if (isset($argv[1]) && parse_url($argv[1], PHP_URL_HOST)) {

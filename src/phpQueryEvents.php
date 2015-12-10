@@ -1,4 +1,7 @@
 <?php
+
+use phpQuery\DOMEvent;
+
 /**
  * Event handling class.
  *

@@ -1,4 +1,23 @@
 <?php
+
+namespace phpQuery;
+
+use DOMDocument;
+use DOMElement;
+use DOMNode;
+use DOMNodeList;
+use DOMXPath;
+use Exception;
+use phpQuery;
+use phpQuery\Callback;
+use phpQuery\CallbackBody;
+use phpQuery\CallbackParam;
+use phpQuery\CallbackParameterToReference;
+use phpQuery\CallbackReturnReference;
+use phpQuery\CallbackReturnValue;
+use phpQuery\DOMEvent;
+use phpQuery\ICallbackNamed;
+
 /**
  * DOMDocumentWrapper class simplifies work with DOMDocument.
  *
@@ -54,7 +73,7 @@ class DOMDocumentWrapper {
 	public function load($markup, $contentType = null, $newDocumentID = null) {
 //		phpQuery::$documents[$id] = $this;
 		$this->contentType = strtolower($contentType);
-		if ($markup instanceof DOMDOCUMENT) {
+		if ($markup instanceof DOMDocument) {
 			$this->document = $markup;
 			$this->root = $this->document;
 			$this->charset = $this->document->encoding;
@@ -152,7 +171,7 @@ class DOMDocumentWrapper {
 		// @see http://www.w3.org/International/O-HTTP-charset
 		if (! $documentCharset) {
 			$documentCharset = 'ISO-8859-1';
-			$addDocumentCharset = true;	
+			$addDocumentCharset = true;
 		}
 		// Should be careful here, still need 'magic encoding detection' since lots of pages have other 'default encoding'
 		// Worse, some pages can have mixed encodings... we'll try not to worry about that
@@ -432,7 +451,7 @@ class DOMDocumentWrapper {
 	public function import($source, $sourceCharset = null) {
 		// TODO charset conversions
 		$return = array();
-		if ($source instanceof DOMNODE && !($source instanceof DOMNODELIST))
+		if ($source instanceof DOMNode && !($source instanceof DOMNodeList))
 			$source = array($source);
 //		if (is_array($source)) {
 //			foreach($source as $node) {
@@ -442,7 +461,7 @@ class DOMDocumentWrapper {
 //					if ($fake === false)
 //						throw new Exception("Error loading documentFragment markup");
 //					else
-//						$return = array_merge($return, 
+//						$return = array_merge($return,
 //							$this->import($fake->root->childNodes)
 //						);
 //				} else {
@@ -458,7 +477,7 @@ class DOMDocumentWrapper {
 //			else
 //				return $this->import($fake->root->childNodes);
 //		}
-		if (is_array($source) || $source instanceof DOMNODELIST) {
+		if (is_array($source) || $source instanceof DOMNodeList) {
 			// dom nodes
 			self::debug('Importing nodes to document');
 			foreach($source as $node)
@@ -477,7 +496,8 @@ class DOMDocumentWrapper {
 	 * Creates new document fragment.
 	 *
 	 * @param $source
-	 * @return DOMDocumentWrapper
+	 *
+*@return DOMDocumentWrapper
 	 */
 	protected function documentFragmentCreate($source, $charset = null) {
 		$fake = new DOMDocumentWrapper();
@@ -489,9 +509,9 @@ class DOMDocumentWrapper {
 		if (! $charset)
 			$charset = $this->charset;
 //	$fake->documentCreate($this->charset);
-		if ($source instanceof DOMNODE && !($source instanceof DOMNODELIST))
+		if ($source instanceof DOMNode && !($source instanceof DOMNodeList))
 			$source = array($source);
-		if (is_array($source) || $source instanceof DOMNODELIST) {
+		if (is_array($source) || $source instanceof DOMNodeList) {
 			// dom nodes
 			// load fake document
 			if (! $this->documentFragmentLoadMarkup($fake, $charset))
@@ -509,7 +529,8 @@ class DOMDocumentWrapper {
 	 *
 	 * @param $document DOMDocumentWrapper
 	 * @param $markup
-	 * @return $document
+	 *
+*@return $document
 	 */
 	private function documentFragmentLoadMarkup($fragment, $charset, $markup = null) {
 		// TODO error handling
@@ -577,11 +598,11 @@ class DOMDocumentWrapper {
 	 * @return string
 	 */
 	public function markup($nodes = null, $innerMarkup = false) {
-		if (isset($nodes) && count($nodes) == 1 && $nodes[0] instanceof DOMDOCUMENT)
+		if (isset($nodes) && count($nodes) == 1 && $nodes[0] instanceof DOMDocument)
 			$nodes = null;
 		if (isset($nodes)) {
 			$markup = '';
-			if (!is_array($nodes) && !($nodes instanceof DOMNODELIST) )
+			if (!is_array($nodes) && !($nodes instanceof DOMNodeList) )
 				$nodes = array($nodes);
 			if ($this->isDocumentFragment && ! $innerMarkup)
 				foreach($nodes as $i => $node)

@@ -1,4 +1,12 @@
 <?php
+use phpQuery\ICallbackNamed;
+use phpQuery\Callback;
+use phpQuery\CallbackParam;
+use phpQuery\CallbackParameterToReference;
+use phpQuery\CallbackReturnValue;
+use phpQuery\CallbackReturnReference;
+use phpQuery\CallbackBody;
+
 /**
  * Automated google account login.
  * Uses __config.php to keep login data.

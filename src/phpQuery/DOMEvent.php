@@ -1,4 +1,9 @@
 <?php
+
+namespace phpQuery;
+
+use phpQuery;
+
 /**
  * DOMEvent class.
  *

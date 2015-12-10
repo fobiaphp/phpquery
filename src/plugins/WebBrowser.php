@@ -1,4 +1,6 @@
 <?php
+use phpQuery\Callback;
+
 /**
  * WebBrowser plugin.
  *
@@ -247,7 +249,7 @@ class phpQueryPlugin_WebBrowser {
 			return $pq;
 	}
 	/**
-	 * 
+	 *
 	 * @param $e
 	 * @param $callback
 	 * @return unknown_type
