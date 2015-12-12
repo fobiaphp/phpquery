@@ -1321,21 +1321,25 @@ class phpQueryPlugins {
 			throw new Exception("Method '{$method}' doesnt exist");
 	}
 }
-/**
- * Shortcut to phpQuery::pq($arg1, $context)
- * Chainable.
- *
- * @see phpQuery::pq()
- * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
- * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
- * @package phpQuery
- */
-function pq($arg1, $context = null) {
-	$args = func_get_args();
-	return call_user_func_array(
-		array('phpQuery', 'pq'),
-		$args
-	);
+
+if (!function_exists('pq'))
+{
+	/**
+	 * Shortcut to phpQuery::pq($arg1, $context)
+	 * Chainable.
+	 *
+	 * @see phpQuery::pq()
+	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
+	 * @package phpQuery
+	 */
+	function pq($arg1, $context = null) {
+		$args = func_get_args();
+		return call_user_func_array(
+			array('phpQuery', 'pq'),
+			$args
+		);
+	}
 }
 // add plugins dir and Zend framework to include path
 //set_include_path(
