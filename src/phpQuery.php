@@ -1292,6 +1292,17 @@ abstract class phpQuery {
 			self::dataRemoveNode($node, $documentID);
 		}
 	}
+
+	/**
+	 * Zend framework to include path
+	 */
+	public static function ZendLoader()
+	{
+		set_include_path(
+			get_include_path()
+				. PATH_SEPARATOR . dirname(__FILE__) . '/'
+		);
+	}
 }
 /**
  * Plugins static namespace class.
