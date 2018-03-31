@@ -145,7 +145,7 @@ abstract class phpQuery {
 	 * @param string|DOMNode|DOMNodeList|array	$arg1	HTML markup, CSS Selector, DOMNode or array of DOMNodes
 	 * @param string|phpQueryObject|DOMNode	$context	DOM ID from $pq->getDocumentID(), phpQuery object (determines also query root) or DOMNode (determines also query root)
 	 *
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery|false
+	 * @return phpQueryObject|false
    * phpQuery object or false in case of error.
 	 */
 	public static function pq($arg1, $context = null) {
@@ -258,7 +258,7 @@ abstract class phpQuery {
 	 *
 	 * @see phpQuery::selectDocument()
 	 * @param unknown_type $id
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function getDocument($id = null) {
 		if ($id)
@@ -272,7 +272,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocument($markup = null, $contentType = null) {
 		if (! $markup)
@@ -285,7 +285,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentHTML($markup = null, $charset = null) {
 		$contentType = $charset
@@ -298,7 +298,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentXML($markup = null, $charset = null) {
 		$contentType = $charset
@@ -311,7 +311,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentXHTML($markup = null, $charset = null) {
 		$contentType = $charset
@@ -324,7 +324,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentPHP($markup = null, $contentType = "text/html") {
 		// TODO pass charset to phpToMarkup if possible (use DOMDocumentWrapper function)
@@ -409,7 +409,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param string $file URLs allowed. See File wrapper page at php.net for more supported sources.
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentFile($file, $contentType = null) {
 		$documentID = self::createDocumentWrapper(
@@ -422,7 +422,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentFileHTML($file, $charset = null) {
 		$contentType = $charset
@@ -435,7 +435,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentFileXML($file, $charset = null) {
 		$contentType = $charset
@@ -448,7 +448,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentFileXHTML($file, $charset = null) {
 		$contentType = $charset
@@ -461,7 +461,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param unknown_type $markup
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 */
 	public static function newDocumentFilePHP($file, $contentType = null) {
 		return self::newDocumentPHP(file_get_contents($file), $contentType);
@@ -471,7 +471,7 @@ abstract class phpQuery {
 	 * Chainable.
 	 *
 	 * @param $document DOMDocument
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 * @TODO support DOMDocument
 	 */
 	public static function loadDocument($document) {
@@ -1340,7 +1340,7 @@ if (!function_exists('pq'))
 	 * Chainable.
 	 *
 	 * @see phpQuery::pq()
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
+	 * @return phpQueryObject
 	 * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
 	 * @package phpQuery
 	 */

@@ -10,7 +10,17 @@
         "phpunit/phpunit": "^5.2"
     },
     "autoload": {
-        "psr-0": { "": "./src" }
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-0": { 
+            "Zend_": "./src/Zend"
+        },
+        "classmap": [
+            "./src/phpQuery.php",
+            "./src/phpQueryObject.php",
+            "./src/phpQuery"
+        ]
     },
     "bin": [
         "cli/phpquery"
