@@ -21,3 +21,8 @@ form submissions (a big deal for functional testing). See the commit history
 in github for any later changes.
 
 - P'unk Avenue
+
+Tests:
+
+cd test-cases && php run.php
+./vendor/bin/phpunit unit-tests/test.php

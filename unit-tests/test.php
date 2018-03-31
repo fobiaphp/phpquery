@@ -2,9 +2,11 @@
 // require_once 'PHPUnit/Autoload.php';
 // require_once dirname(__FILE__) . '/../src/phpQuery.php';
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
-//phpQuery::$debug = true;
+// phpQuery::$debug = true;
 
-class phpQueryBasicTest extends \PHPUnit_Framework_TestCase {
+class phpQueryBasicTest extends \PHPUnit_Framework_TestCase
+{
+
     function provider() {
         // TODO change filename
         return array( array(
@@ -205,14 +207,9 @@ EOF;
         $this->assertGreaterThan( 90, $similarity);
     }
 
-
-//    function __construct() {
-//        xdebug_break();
-//        parent::__construct();
-//    }
 }
 
-$test = new phpQueryBasicTest();
+// $test = new phpQueryBasicTest();
 //$test->testFilterWithPseudoclass();
-$result = null;
+// $result = null;
 //$test->run($result);

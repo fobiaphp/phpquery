@@ -9,7 +9,7 @@ set_include_path(
 // TODO move them into directory
 // include  dirname(__FILE__) . '/test_1.php';
 include  dirname(__FILE__) . '/test_2.php';
-include  dirname(__FILE__) . '/test_3.php';
+// include  dirname(__FILE__) . '/test_3.php';
 include  dirname(__FILE__) . '/test_4.php';
 include  dirname(__FILE__) . '/test_5.php';
 include  dirname(__FILE__) . '/test_wrap.php';
